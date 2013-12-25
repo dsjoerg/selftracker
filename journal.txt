@@ -1,3 +1,5 @@
+20131221
+
 wget -O - 'https://www.rescuetime.com/anapi/data?format=csv&pv=interval&key=B63zW4H7suLb191r8Z4zqqZmSh0XyWbxZHZBl1h1&restrict_begin=2013-12-01&restrict_end=2013-12-20' > /tmp/activities
 
 awk -F, '{print $1}' activities | tail +2  | uniq | head -30
@@ -15,3 +17,18 @@ awk -F, '{print $1}' activities | tail +2  | uniq | head -30
 2013-12-01T22:00:00
 2013-12-02T09:00:00   <--- gap detected!  you were sleeping for a while!
 2013-12-02T10:00:00
+
+
+==========================================================
+
+20131225
+
+Got a nice JSON endpoint for reporting on the # of threads in my gmail inbox, plus their average days-since-last-message.
+
+https://script.googleusercontent.com/macros/echo?user_content_key=tJC7HO9_yCvvUwuxCtATMHfXHIFla9Hd7HvLVCtTt0IFgEjuOaYU7wHs5hjSviJ1gBWDoNn-LiH5tjRtSvkLQzvfDejnWfBYm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnF2Wet6W0MYK9KoOBexVAB-qSx9RUp6XAE0A0-Nxfm6coxRr-Mvf6zBz8RzNtOubJA&lib=MJtBpQ8CewMN9CGAAuJaGFjGq41jeecso
+
+Next:
+* set up automatic retrieval and recording of the gmail stats on a daily basis.  scraperwiki?  your own codebase?
+* pull in sleep data as well
+* send a morning email.  status, instructions, reminders
+
