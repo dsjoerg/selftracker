@@ -1,0 +1,17 @@
+wget -O - 'https://www.rescuetime.com/anapi/data?format=csv&pv=interval&key=B63zW4H7suLb191r8Z4zqqZmSh0XyWbxZHZBl1h1&restrict_begin=2013-12-01&restrict_end=2013-12-20' > /tmp/activities
+
+awk -F, '{print $1}' activities | tail +2  | uniq | head -30
+
+2013-12-01T09:00:00
+2013-12-01T10:00:00
+2013-12-01T11:00:00
+2013-12-01T13:00:00
+2013-12-01T16:00:00
+2013-12-01T17:00:00
+2013-12-01T18:00:00
+2013-12-01T19:00:00
+2013-12-01T20:00:00
+2013-12-01T21:00:00
+2013-12-01T22:00:00
+2013-12-02T09:00:00   <--- gap detected!  you were sleeping for a while!
+2013-12-02T10:00:00
