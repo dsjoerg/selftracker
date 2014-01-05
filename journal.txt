@@ -25,10 +25,192 @@ awk -F, '{print $1}' activities | tail +2  | uniq | head -30
 
 Got a nice JSON endpoint for reporting on the # of threads in my gmail inbox, plus their average days-since-last-message.
 
-https://script.googleusercontent.com/macros/echo?user_content_key=tJC7HO9_yCvvUwuxCtATMHfXHIFla9Hd7HvLVCtTt0IFgEjuOaYU7wHs5hjSviJ1gBWDoNn-LiH5tjRtSvkLQzvfDejnWfBYm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnF2Wet6W0MYK9KoOBexVAB-qSx9RUp6XAE0A0-Nxfm6coxRr-Mvf6zBz8RzNtOubJA&lib=MJtBpQ8CewMN9CGAAuJaGFjGq41jeecso
+https://script.google.com/macros/s/AKfycbw_Y713sRR8_QWF4Sck_UrABdCZzGXMhHmS6Mi5QqX0j9ssU0E8/exec
+aka http://bit.ly/dsj_inbox
+
+Done:
+* set up automatic retrieval and recording of the gmail stats on a daily basis.  scraperwiki?  your own codebase?
+X DONE in Scraperwiki for now: https://scraperwiki.com/dataset/eq7wjwa/view/g3brisy
 
 Next:
-* set up automatic retrieval and recording of the gmail stats on a daily basis.  scraperwiki?  your own codebase?
-* pull in sleep data as well
+
+* next data items, gathered into a system you control:
+** gmail
+** sleep
+** exercise
+** activity
+** hours gaming
+** hours programming (emacs + xcode)
+** restaurants/bars visited (via foursquare)
+
 * send a morning email.  status, instructions, reminders
+
+Big idea:
+* Email is DJ's operating system.
+* Thus email can be used to prompt DJ for quick responses, i.e. for gathering needed information
+* And email can be used to push info to DJ that tends to reinforce the desired behavior -- for example telling him his # of emails, and their age, perhaps in a chart, will inspire him to cut the # down.
+* With a tracking pixel we can tell if he saw the email.
+* Reflecting his stress, sleep, exercise and other levels back to him will keep him aware of what's important.
+* Another metric of stress is how much time is scheduled/accounted for.
+* Total # of emails sent/received,
+
+Can any of these do what you want?
+http://personalinformatics.org/tools
+
+
+==========================================================
+20131226
+
+Daily email from your boss.
+
+When should you get it?  If the interface is strictly email that
+limits what you can do with it.
+
+Probably should be a simple link to a page, and it gets increasingly
+pushy if you don't click it.
+
+This email can be sent @ 6am.  It has whatever can be in it, plus a
+link to the web page for interactive content that can't.
+
+---
+To do now:
+* sync your UP     (checks off when done)
+* charge your UP   (when needed. checks off when done)
+* make your plan for today  (if you didn't already make one)
+
+Plan for today:
+<--- whatever you wrote
+<--- whatever is on your calendar
+<--- Quest:
+
+Status:   Yesterday    Lately (10-day EMA)
+- Sleep <sparkline> 7.3 hrs, 6.8 hrs
+- Exercise <sparkline> 7 mins, 20 mins
+- Coding <sparkline> 1.5 hrs, 2.1 hrs
+- Gaming <sparkline> 1.5 hrs, 1.5 hrs
+- Inbox Threads <sparkline> 85, 70
+For each, color from Green to Red indicating whether it's OK or a problem to be aware of.
+
+Plan for tomorrow:  <text entry box and submit button>
+
+Status:
+
+
+Other things to track:
+* weight
+* location <--- in order to get commuting time
+* correspondents <--- social interactions
+* likely social checkins
+* git commits
+* chess time + ELO
+* sc2 time + sc2 stats
+* tweets, RTs and favs
+* blog posts and hits
+* FB interactions (likes, comment, shares)
+
+Quests:
+* get to bed by 10 o'clock
+* make a blog post
+* exercise >25 minutes
+* play a game you've never played before
+* make someone laugh/smile
+* get two wins in a row in [Chess | Hearthstone | StarCraft], then STOP
+* set a date to get together with a friend
+* get your inbox down to (75% current size)
+* today's coding is all TDD
+* read for 30 minutes in a row
+* use an atypical sentence construction in {an email, speaking}
+* use the word "XXXXXX" in {an email, speaking}  <--- chosen from level X of an online dictionary and that does not appear in your emails in the past year
+* this evening, join Michele in watching/reading
+* call [Mom | Dad | Jay | Jeanette]
+* find some new music
+* reconnect with someone you haven't communicated with in >3 months
+* find 3 fun things to do on date night
+* make up a new game to play with Francine
+* spend 20 minutes organizing your office
+* spend 20 minutes doing home improvement
+* any act of additional personal grooming
+* try a new form of self-measurement
+* find a new book worth reading
+
+Rewards:
+* Buy a tub of Nutella
+* Stay up 1 hr later tonight
+* 45 mins gaming session
+* 10 Gold!
+* Buy a bottle of port
+* Buy 10 packs of hearthstone cards
+
+
+Rewards?
+* $$$ to buy what though?
+* clothes
+* work on GGTracker
+* $$$ towards the Servant Fund, a fund where you hire people to do crazy stuff for you, like:
+** install a proper mailbox detector
+** write software
+** play video games (Grubby)
+
+
+==========================================================
+20131230
+
+On flight to PR!
+
+* send a daily email saying hi
+* set up observation timeseries table
+* retrieve and import observations from each of your endpoints
+* set up daily stat table
+
+observation
+* id
+* obs_datetime
+* obs_type_id
+* obs_var_one  <--- string
+* obs_value    <--- string or float?   the advantage of string being that you can have an obs_type like "saw someone" and a string value
+
+observation_type
+* id
+* name
+* definition
+
+note
+* id
+* note_text
+
+daily_obs
+* id
+* obs_date
+* obs_type_id
+* obs_value    <--- string or float?
+
+retrieval   <--- this is our packrat table that stores everything
+                 we retrieved from anybody in raw form. that way if
+                 there's a problem we can reprocess it later.
+* id
+* retrieval_datetime
+* retrieval_URI
+* retrieval_result
+
+Put the thing up in RoR on heroku.  Does that mean it's gotta be
+postgres?  Lord knows it doesn't matter much.
+
+
+
+observation_types
+-----------------
+gmail_threads       the number of gmail threads in my inbox
+gmail_min_threads   the minimum number of gmail threads in my inbox during a certain period of time
+hours_spent         records the number of hours spent in various trackable activities
+
+trackable activities
+--------------------
+sleep               number of hours slept on the evening that started on the indicated day
+fun                 RescueTime entertainment category
+coding              emacs, Xcode
+exercise            as tracked by RunKeeper
+
+quest               the quest # assigned for that period of time
+
+
 
