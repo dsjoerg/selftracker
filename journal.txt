@@ -214,3 +214,18 @@ quest               the quest # assigned for that period of time
 
 
 
+==========================================================
+20130105
+
+In order to track the amount of time you spend walking / commuting,
+use the Moves app which has an API.
+
+https://dev.moves-app.com/docs/api_storyline
+
+
+==========================================================
+20130107
+
+URI for your inbox data from scraperwiki!
+
+https://free-ec2.scraperwiki.com/eq7wjwa/5d0648f0a88f4fd/sql?q=select+*+from+swdata
